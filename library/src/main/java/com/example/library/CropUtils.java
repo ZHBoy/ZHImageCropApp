@@ -26,6 +26,7 @@ public class CropUtils {
 
     //图片的Uri
     public static Uri imageUri =   Uri.fromFile(file);
+
     /**
      * 裁剪
      * @param mContext fragment
