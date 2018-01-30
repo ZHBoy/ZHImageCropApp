@@ -3,7 +3,7 @@
 引用：compile 'com.github.ZHBoy:ZHImageCropApp:v1.0.2'
 
 调用代码：
-
+```
 public class MainActivity extends AppCompatActivity {
 
     ImageView cropImage;
@@ -48,3 +48,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+```
