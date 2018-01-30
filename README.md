@@ -1,7 +1,9 @@
 # ZHImageCropApp
 头像、封面裁剪上传
+```
 引用：
 compile 'com.github.ZHBoy:ZHImageCropApp:v1.0.2'
+```
 
 调用代码：
 ```
