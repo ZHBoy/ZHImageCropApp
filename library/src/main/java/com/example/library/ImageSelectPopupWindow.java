@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -26,10 +27,12 @@ public class ImageSelectPopupWindow extends PopupWindow {
     private View mPopView;
 
     private Activity mContext;
+    private Fragment fragment;
 
-    public ImageSelectPopupWindow(Activity context) {
+    public ImageSelectPopupWindow(Activity context, Fragment fragment) {
         super(context);
         this.mContext = context;
+        this.fragment = fragment;
         init();
         setPopupWindow();
     }
@@ -117,6 +120,10 @@ public class ImageSelectPopupWindow extends PopupWindow {
     private void selectFromLocal() {
         Intent intent = new Intent(Intent.ACTION_PICK, null);
         intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+        if (fragment != null){
+            fragment.startActivityForResult(intent, CropUtils.CHOOSE_IMAGE);
+            return;
+        }
         mContext.startActivityForResult(intent, CropUtils.CHOOSE_IMAGE);
     }
 
@@ -127,6 +134,10 @@ public class ImageSelectPopupWindow extends PopupWindow {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // 下面这句指定调用相机拍照后的照片存储的路径
         intent.putExtra(MediaStore.EXTRA_OUTPUT, CropUtils.imageUri);
+        if (fragment != null){
+            fragment.startActivityForResult(intent, CropUtils.PICK_CAMERA);
+            return;
+        }
         mContext.startActivityForResult(intent, CropUtils.PICK_CAMERA);
     }
 

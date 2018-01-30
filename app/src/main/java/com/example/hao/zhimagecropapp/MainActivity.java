@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initPopupWindow() {
-        imageSelectPopupWindow = new ImageSelectPopupWindow(this);
+        imageSelectPopupWindow = new ImageSelectPopupWindow(this,null);
     }
 
     @Override
